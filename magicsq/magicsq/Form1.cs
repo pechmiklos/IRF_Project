@@ -20,6 +20,7 @@ namespace magicsq
         public Form1()
         {
             InitializeComponent();
+           
             CreatePlayField();
             LoadMagicsquares();
             _currentQuiz = GetRandomQuiz();
@@ -59,8 +60,9 @@ namespace magicsq
                 {
                     mf.Active = false;
                 }
-                MessageBox.Show("Győztél");
-
+                timer1.Stop();
+                MessageBox.Show("Kész,  " + time + " másodperc alatt");
+                
                 _currentQuiz = GetRandomQuiz();
                 NewGame();
             }
@@ -94,7 +96,7 @@ namespace magicsq
         }
         private void NewGame()
         {
-
+            timer1.Start();
 
             int counter = 0;
               foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
@@ -105,6 +107,11 @@ namespace magicsq
             }
 
         }
-
+        public int time;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time = time + 1;
+            label1.Text = time.ToString();
+        }
     }
 }
