@@ -13,15 +13,17 @@ namespace magicsq
 {
     public partial class Form1 : Form
     {
+        private Random _rng = new Random();
+        private Magicsquare _currentQuiz = null;
        
         private List<Magicsquare> _magicssquares = new List<Magicsquare>();
         public Form1()
         {
             InitializeComponent();
             CreatePlayField();
-            GetRandomQuiz();
             LoadMagicsquares();
-            
+            _currentQuiz = GetRandomQuiz();
+
             NewGame();
         }
 
@@ -44,29 +46,39 @@ namespace magicsq
         private void LoadMagicsquares()
         {
             _magicssquares.Clear();
+           
             using (StreamReader sr = new StreamReader("magicsquare.csv",Encoding.Default))
             {
                 sr.ReadLine();
-                while(!sr.EndOfStream)
+                while (!sr.EndOfStream)
                 {
-                    string[] line = sr.ReadLine().Split(';');
-                    Magicsquare m = new Magicsquare();
-                    m.Quiz = line[0];
-                    m.Solution = line[1];
+                    string[] line = sr.ReadLine().Split('.');
+                     Magicsquare m = new Magicsquare();
+                     m.Quiz = line[0];
+                     m.Solution = line[1];
                     _magicssquares.Add(m);
-                    MessageBox.Show(m.Solution);
+                   
+                    
                 }
+                
             }
+           
         }
-        private void GetRandomQuiz()
+        private Magicsquare GetRandomQuiz()
         {
-         
+            int randomNumber = _rng.Next(_magicssquares.Count);
+            return _magicssquares[randomNumber];
         }
         private void NewGame()
         {
-           
-         
-              
+
+
+            int counter = 0;
+              foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
+            {
+                mf.Value = int.Parse(_currentQuiz.Quiz[counter].ToString());
+                counter++;
+            }
 
         }
 
