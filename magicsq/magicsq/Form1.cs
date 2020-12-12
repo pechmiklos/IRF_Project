@@ -37,12 +37,32 @@ namespace magicsq
                     Magicfield mf = new Magicfield();
                     mf.Left = col * mf.Width + lineWidth;
                     mf.Top = row * mf.Height + lineWidth;
+                    mf.MouseDown += Mf_MouseDown;
                     mainPanel.Controls.Add(mf);
+
                 }
             }
            
 
         }
+
+        private void Mf_MouseDown(object sender, MouseEventArgs e)
+        {
+            string val = "";
+            foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
+            {
+                val = val + mf.Value.ToString();
+            }
+            if (val.Equals(_currentQuiz.Solution))
+            {
+                foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
+                {
+                    mf.Active = false;
+                }
+                MessageBox.Show("Győztél");
+            }
+        }
+
         private void LoadMagicsquares()
         {
             _magicssquares.Clear();
