@@ -8,5 +8,7 @@ namespace magicsq
 {
     class Magicsquare
     {
+        public string Quiz { get; set; }
+        public string Solution { get; set; }
     }
 }
