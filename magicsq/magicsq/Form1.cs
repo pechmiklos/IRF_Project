@@ -15,6 +15,7 @@ namespace magicsq
     {
         private Random _rng = new Random();
         private Magicsquare _currentQuiz = null;
+        public int gamenumber = 0;
        
         private List<Magicsquare> _magicssquares = new List<Magicsquare>();
         public Form1()
@@ -56,16 +57,27 @@ namespace magicsq
             }
             if (val.Equals(_currentQuiz.Solution))
             {
-                foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
-                {
-                    mf.Active = false;
-                }
-                timer1.Stop();
-                MessageBox.Show("Kész,  " + time + " másodperc alatt");
-                
-                _currentQuiz = GetRandomQuiz();
-                NewGame();
+                NextGame();
             }
+        }
+
+        private void NextGame()
+        {
+            foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
+            {
+                mf.Active = false;
+            }
+            timer1.Stop();
+            MessageBox.Show("Kész,  " + time + " másodperc alatt");
+            var r = new Result()
+            {
+                GameNumber = gamenumber,
+                Time = time
+            };
+            
+
+            _currentQuiz = GetRandomQuiz();
+            NewGame();
         }
 
         private void LoadMagicsquares()
@@ -96,6 +108,8 @@ namespace magicsq
         }
         private void NewGame()
         {
+            time = 0;
+            gamenumber = gamenumber + 1;
             timer1.Start();
 
             int counter = 0;
