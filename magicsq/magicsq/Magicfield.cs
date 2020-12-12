@@ -30,6 +30,22 @@ namespace magicsq
             }
         }
 
+        private bool _active;
+
+        public bool Active
+        {
+            get { return _active; }
+            set
+            { _active = value;
+                if (_active)
+                    Font = new Font(FontFamily.GenericSansSerif, 12);
+                else
+                    Font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold);
+            }
+        }
+
+
+
         public Magicfield()
         {
             Height = 60;
@@ -48,18 +64,6 @@ namespace magicsq
                 Value--;
         }
 
-        private bool _active;
-        public bool Active
-        {
-            get { return _active; }
-            set
-            {
-                _active = value;
-                if (_active)
-                    Font = new Font(FontFamily.GenericSansSerif, 12);
-                else
-                    Font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold);
-            }
-        }
+      
     }
 }

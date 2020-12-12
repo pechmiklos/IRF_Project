@@ -77,6 +77,7 @@ namespace magicsq
               foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
             {
                 mf.Value = int.Parse(_currentQuiz.Quiz[counter].ToString());
+                mf.Active = mf.Value == 0;
                 counter++;
             }
 
