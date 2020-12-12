@@ -60,6 +60,9 @@ namespace magicsq
                     mf.Active = false;
                 }
                 MessageBox.Show("Győztél");
+
+                _currentQuiz = GetRandomQuiz();
+                NewGame();
             }
         }
 

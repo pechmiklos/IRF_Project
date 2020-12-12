@@ -29,7 +29,9 @@ namespace magicsq
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // mainPanel
@@ -54,6 +56,7 @@ namespace magicsq
         #endregion
 
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
