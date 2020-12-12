@@ -13,15 +13,15 @@ namespace magicsq
 {
     public partial class Form1 : Form
     {
-        private Random _rng = new Random();
-        private Magicsquare _currentQuiz = null;
+       
         private List<Magicsquare> _magicssquares = new List<Magicsquare>();
         public Form1()
         {
             InitializeComponent();
             CreatePlayField();
+            GetRandomQuiz();
             LoadMagicsquares();
-            _currentQuiz = GetRandomQuiz();
+            
             NewGame();
         }
 
@@ -54,17 +54,19 @@ namespace magicsq
                     m.Quiz = line[0];
                     m.Solution = line[1];
                     _magicssquares.Add(m);
-                    
+                    MessageBox.Show(m.Solution);
                 }
             }
         }
-        private Magicsquare GetRandomQuiz()
+        private void GetRandomQuiz()
         {
-            int randomNumber = _rng.Next(_magicssquares.Count);
-            return _magicssquares[randomNumber];
+         
         }
         private void NewGame()
         {
+           
+         
+              
 
         }
 
