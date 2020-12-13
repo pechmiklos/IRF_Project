@@ -10,6 +10,9 @@ namespace magicsq
 {
     class Magicfield : Button
     {
+        
+
+
         private int _value;
 
         public int Value

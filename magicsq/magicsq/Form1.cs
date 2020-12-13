@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace magicsq
 {
@@ -18,15 +19,16 @@ namespace magicsq
         public int gamenumber = 0;
        
         private List<Magicsquare> _magicssquares = new List<Magicsquare>();
+        private List<Result> _results = new List<Result>();
+        
         public Form1()
         {
             InitializeComponent();
+            chart1.DataSource = _results;
            
             CreatePlayField();
             LoadMagicsquares();
-            _currentQuiz = GetRandomQuiz();
-
-            NewGame();
+           
         }
 
         private void CreatePlayField()
@@ -53,15 +55,15 @@ namespace magicsq
             string val = "";
             foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
             {
-                val = val + mf.Value.ToString();
+                val += mf.Value.ToString();
             }
             if (val.Equals(_currentQuiz.Solution))
             {
-                NextGame();
+               EndGame();
             }
         }
 
-        private void NextGame()
+        private void EndGame()
         {
             foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
             {
@@ -69,15 +71,23 @@ namespace magicsq
             }
             timer1.Stop();
             MessageBox.Show("Kész,  " + time + " másodperc alatt");
-            var r = new Result()
-            {
-                GameNumber = gamenumber,
-                Time = time
-            };
-            
+            var r = new Result();
+            r.GameNumber = gamenumber;
+            r.Time = time;
+            _results.Add(r);
+            chart1.DataSource = _results;
+            var series = chart1.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "GameNumber";
+            series.YValueMembers = "Time";
+            series.BorderWidth = 2;
+
+
+
+
 
             _currentQuiz = GetRandomQuiz();
-            NewGame();
+           
         }
 
         private void LoadMagicsquares()
@@ -126,6 +136,13 @@ namespace magicsq
         {
             time = time + 1;
             label1.Text = time.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            _currentQuiz = GetRandomQuiz();
+            NewGame();
         }
     }
 }

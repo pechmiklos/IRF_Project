@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace magicsq
 {
-    class Result
+    public class Result
     {
         public int GameNumber { get; set; }
         public int Time { get; set; }
