@@ -77,7 +77,15 @@ namespace magicsq
             _results.Add(r);
             chart1.DataSource = _results;
             var series = chart1.Series[0];
-            series.ChartType = SeriesChartType.Line;
+            if (gamenumber==1)
+            {
+                series.ChartType = SeriesChartType.Point;
+            }
+            else
+            {
+                series.ChartType = SeriesChartType.Line;
+            }
+            
             series.XValueMember = "GameNumber";
             series.YValueMembers = "Time";
             series.BorderWidth = 2;
