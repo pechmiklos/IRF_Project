@@ -26,19 +26,21 @@ namespace magicsq
             InitializeComponent();
             chart1.DataSource = _results;
            
-            CreatePlayField();
-            LoadMagicsquares();
+            
+            
            
         }
 
-        private void CreatePlayField()
+        private void CreatePlayField(int lenght,int size)
         {
             int lineWidth = 5;
-            for (int row = 0; row < 3; row++)
+            for (int row = 0; row < lenght; row++)
             {
-                for (int col = 0; col < 3; col++)
+                for (int col = 0; col < lenght; col++)
                 {
                     Magicfield mf = new Magicfield();
+                    mf.Height = size;
+                    mf.Width = size;
                     mf.Left = col * mf.Width + lineWidth;
                     mf.Top = row * mf.Height + lineWidth;
                     mf.MouseDown += Mf_MouseDown;
@@ -58,26 +60,37 @@ namespace magicsq
             {
                 val += mf.Value.ToString();
             }
-            if (val != "000000000")
-            {
-
 
                 if (val.Equals(_currentQuiz.Solution))
                 {
                     EndGame();
                 }
-            }
+            
         }
 
         private void EndGame()
         {
+            string gametype;
+            int counter = 0;
             foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
             {
                 mf.Active = false;
+                counter += 1;
+
             }
             timer1.Stop();
+            if (counter==9)
+            {
+                gametype = "Bűvösnégyzet";
+            }
+            else
+            {
+                gametype = "Sudoku";
+            }
+            
             MessageBox.Show("Kész,  " + time + " másodperc alatt");
             var r = new Result();
+            r.Gametype = gametype;
             r.GameNumber = gamenumber;
             r.Time = time;
             _results.Add(r);
@@ -120,11 +133,11 @@ namespace magicsq
             label4.Text = min.ToString();
         }
 
-        private void LoadMagicsquares()
+        private void LoadMagicsquares(string file)
         {
             _magicssquares.Clear();
            
-            using (StreamReader sr = new StreamReader("magicsquare.csv",Encoding.Default))
+            using (StreamReader sr = new StreamReader(file,Encoding.Default))
             {
                 sr.ReadLine();
                 while (!sr.EndOfStream)
@@ -165,16 +178,30 @@ namespace magicsq
         private void timer1_Tick(object sender, EventArgs e)
         {
             time = time + 1;
-            label1.Text = time.ToString();
+            lblTime.Text = time.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            LoadMagicsquares("magicsquare.csv");
+            ClearPanel();
+            CreatePlayField(3,60);
             _currentQuiz = GetRandomQuiz();
             NewGame();
         }
 
-      
+        private void ClearPanel()
+        {
+            mainPanel.Controls.Clear();
+        }
+
+        private void sudokuButton_Click(object sender, EventArgs e)
+        {
+            LoadMagicsquares("sudoku.csv");
+            ClearPanel();
+            CreatePlayField(9,30);
+            _currentQuiz = GetRandomQuiz();
+            NewGame();
+        }
     }
 }
