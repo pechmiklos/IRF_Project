@@ -49,6 +49,7 @@ namespace magicsq
             this.gameNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblGametype = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultBindingSource)).BeginInit();
@@ -82,7 +83,7 @@ namespace magicsq
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(899, 103);
+            this.chart1.Location = new System.Drawing.Point(613, 71);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -115,7 +116,7 @@ namespace magicsq
             // labelRekord
             // 
             this.labelRekord.AutoSize = true;
-            this.labelRekord.Location = new System.Drawing.Point(805, 422);
+            this.labelRekord.Location = new System.Drawing.Point(609, 391);
             this.labelRekord.Name = "labelRekord";
             this.labelRekord.Size = new System.Drawing.Size(65, 20);
             this.labelRekord.TabIndex = 5;
@@ -124,7 +125,7 @@ namespace magicsq
             // lblRekord
             // 
             this.lblRekord.AutoSize = true;
-            this.lblRekord.Location = new System.Drawing.Point(906, 422);
+            this.lblRekord.Location = new System.Drawing.Point(690, 391);
             this.lblRekord.Name = "lblRekord";
             this.lblRekord.Size = new System.Drawing.Size(0, 20);
             this.lblRekord.TabIndex = 6;
@@ -161,7 +162,7 @@ namespace magicsq
             this.comboBox1.Items.AddRange(new object[] {
             "Sudoku",
             "Bűvösnégyzet"});
-            this.comboBox1.Location = new System.Drawing.Point(765, 490);
+            this.comboBox1.Location = new System.Drawing.Point(712, 423);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 9;
@@ -205,11 +206,21 @@ namespace magicsq
             // 
             this.resultBindingSource.DataSource = typeof(magicsq.Result);
             // 
+            // lblGametype
+            // 
+            this.lblGametype.AutoSize = true;
+            this.lblGametype.Location = new System.Drawing.Point(609, 431);
+            this.lblGametype.Name = "lblGametype";
+            this.lblGametype.Size = new System.Drawing.Size(86, 20);
+            this.lblGametype.TabIndex = 11;
+            this.lblGametype.Text = "Játéktípus:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 795);
+            this.Controls.Add(this.lblGametype);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
@@ -249,6 +260,7 @@ namespace magicsq
         private System.Windows.Forms.DataGridViewTextBoxColumn gameNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblGametype;
     }
 }
 
