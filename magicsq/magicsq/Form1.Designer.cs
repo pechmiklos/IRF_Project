@@ -48,6 +48,7 @@ namespace magicsq
             this.gameNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultBindingSource)).BeginInit();
@@ -147,7 +148,7 @@ namespace magicsq
             this.gameNumberDataGridViewTextBoxColumn,
             this.timeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.resultBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(755, 565);
+            this.dataGridView1.Location = new System.Drawing.Point(584, 585);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
@@ -158,19 +159,18 @@ namespace magicsq
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Bűvösnégyzet",
-            "Sudoku"});
-            this.comboBox1.Location = new System.Drawing.Point(755, 500);
+            "Sudoku",
+            "Bűvöskocka"});
+            this.comboBox1.Location = new System.Drawing.Point(765, 490);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 9;
-            this.comboBox1.UseWaitCursor = true;
-           
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // gametypeDataGridViewTextBoxColumn
             // 
             this.gametypeDataGridViewTextBoxColumn.DataPropertyName = "Gametype";
-            this.gametypeDataGridViewTextBoxColumn.HeaderText = "Gametype";
+            this.gametypeDataGridViewTextBoxColumn.HeaderText = "Játéktípus";
             this.gametypeDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.gametypeDataGridViewTextBoxColumn.Name = "gametypeDataGridViewTextBoxColumn";
             this.gametypeDataGridViewTextBoxColumn.Width = 150;
@@ -178,7 +178,7 @@ namespace magicsq
             // gameNumberDataGridViewTextBoxColumn
             // 
             this.gameNumberDataGridViewTextBoxColumn.DataPropertyName = "GameNumber";
-            this.gameNumberDataGridViewTextBoxColumn.HeaderText = "GameNumber";
+            this.gameNumberDataGridViewTextBoxColumn.HeaderText = "Sorszám";
             this.gameNumberDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.gameNumberDataGridViewTextBoxColumn.Name = "gameNumberDataGridViewTextBoxColumn";
             this.gameNumberDataGridViewTextBoxColumn.Width = 150;
@@ -186,7 +186,7 @@ namespace magicsq
             // timeDataGridViewTextBoxColumn
             // 
             this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
+            this.timeDataGridViewTextBoxColumn.HeaderText = "Idő";
             this.timeDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
             this.timeDataGridViewTextBoxColumn.Width = 150;
@@ -195,11 +195,22 @@ namespace magicsq
             // 
             this.resultBindingSource.DataSource = typeof(magicsq.Result);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(287, 651);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 795);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.sudokuButton);
@@ -232,11 +243,12 @@ namespace magicsq
         private System.Windows.Forms.Label lblRekord;
         private System.Windows.Forms.Button sudokuButton;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource resultBindingSource;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn gametypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gameNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource resultBindingSource;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

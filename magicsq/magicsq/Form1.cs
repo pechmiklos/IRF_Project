@@ -25,7 +25,7 @@ namespace magicsq
         public Form1()
         {
             InitializeComponent();
-            chart1.DataSource = results;
+            chart1.DataSource = _results;
             dataGridView1.DataSource = results;
             
             
@@ -103,7 +103,7 @@ namespace magicsq
             r.GameNumber = gamenumber;
             r.Time = time;
             results.Add(r);
-            chart1.DataSource = results;
+            // chart1.DataSource = results;
             var series = chart1.Series[0];
             if (gamenumber == 1)
             {
@@ -213,6 +213,29 @@ namespace magicsq
             NewGame();
         }
 
-       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _results.Clear();
+            var s = (string)comboBox1.SelectedItem;
+            foreach ( var r in results)
+            {
+                if (r.Gametype== s)
+                {
+                    var rs = new Result();
+                    rs.Id = r.Id;
+                    rs.Gametype = s;
+                    rs.GameNumber = rs.GameNumber;
+                    rs.Time = r.Time;
+                    _results.Add(r);
+
+                }
+            }
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            EndGame();
+        }
     }
 }
