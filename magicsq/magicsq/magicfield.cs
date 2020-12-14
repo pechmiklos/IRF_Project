@@ -51,7 +51,7 @@ namespace magicsq
 
         public Magicfield()
         {
-            Height = 60;
+            
             Width = Height;
             BackColor = Color.AntiqueWhite;
             Value = 0;

@@ -8,6 +8,7 @@ namespace magicsq
 {
     public class Result
     {
+        public  Guid Id  { get; set; }
         public string Gametype { get; set; }
         public int GameNumber { get; set; }
         public int Time { get; set; }

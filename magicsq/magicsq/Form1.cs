@@ -14,18 +14,20 @@ namespace magicsq
 {
     public partial class Form1 : Form
     {
+        BindingList<Result> results = new BindingList<Result>();
         private Random _rng = new Random();
         private Magicsquare _currentQuiz = null;
-        public int gamenumber = 0;
-       
+        public int magicnumber = 0;
+        public int sudokunumber = 0;
         private List<Magicsquare> _magicssquares = new List<Magicsquare>();
         private List<Result> _results = new List<Result>();
         
         public Form1()
         {
             InitializeComponent();
-            chart1.DataSource = _results;
-           
+            chart1.DataSource = results;
+            dataGridView1.DataSource = results;
+            
             
             
            
@@ -41,8 +43,8 @@ namespace magicsq
                     Magicfield mf = new Magicfield();
                     mf.Height = size;
                     mf.Width = size;
-                    mf.Left = col * mf.Width + lineWidth;
-                    mf.Top = row * mf.Height + lineWidth;
+                    mf.Left = col * mf.Width + (int)(Math.Floor((double)(col/3))) * lineWidth;
+                    mf.Top = row * mf.Height + (int)(Math.Floor((double)(row / 3))) * lineWidth;
                     mf.MouseDown += Mf_MouseDown;
                     mainPanel.Controls.Add(mf);
 
@@ -70,6 +72,7 @@ namespace magicsq
 
         private void EndGame()
         {
+            int gamenumber;
             string gametype;
             int counter = 0;
             foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
@@ -82,19 +85,25 @@ namespace magicsq
             if (counter==9)
             {
                 gametype = "Bűvösnégyzet";
+                magicnumber += 1;
+                gamenumber = magicnumber ;
+
             }
             else
             {
                 gametype = "Sudoku";
+                sudokunumber += 1;
+                gamenumber = sudokunumber ;
             }
             
             MessageBox.Show("Kész,  " + time + " másodperc alatt");
             var r = new Result();
+            r.Id = Guid.NewGuid();
             r.Gametype = gametype;
             r.GameNumber = gamenumber;
             r.Time = time;
-            _results.Add(r);
-            chart1.DataSource = _results;
+            results.Add(r);
+            chart1.DataSource = results;
             var series = chart1.Series[0];
             if (gamenumber == 1)
             {
@@ -115,7 +124,7 @@ namespace magicsq
         private void GetRecord()
         {
             int max = 0;
-            foreach (var m in _results)
+            foreach (var m in results)
             {
                 if (m.Time > max)
                 {
@@ -123,14 +132,14 @@ namespace magicsq
                 }
             }
             int min = max;
-            foreach (var mi in _results)
+            foreach (var mn in results)
             {
-                if (mi.Time < min)
+                if (mn.Time < min)
                 {
-                    min = mi.Time;
+                    min = mn.Time;
                 }
             }
-            label4.Text = min.ToString();
+            lblRekord.Text = min.ToString();
         }
 
         private void LoadMagicsquares(string file)
@@ -162,7 +171,7 @@ namespace magicsq
         private void NewGame()
         {
             time = 0;
-            gamenumber = gamenumber + 1;
+            //gamenumber = gamenumber + 1;
             timer1.Start();
 
             int counter = 0;
@@ -203,5 +212,7 @@ namespace magicsq
             _currentQuiz = GetRandomQuiz();
             NewGame();
         }
+
+       
     }
 }
