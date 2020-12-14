@@ -103,28 +103,16 @@ namespace magicsq
             r.GameNumber = gamenumber;
             r.Time = time;
             results.Add(r);
-            // chart1.DataSource = results;
-            var series = chart1.Series[0];
-            if (gamenumber == 1)
-            {
-                series.ChartType = SeriesChartType.Point;
-            }
-            else
-            {
-                series.ChartType = SeriesChartType.Line;
-            }
-
-            series.XValueMember = "GameNumber";
-            series.YValueMembers = "Time";
-            series.BorderWidth = 2;            
+            SetGraph();                       
             GetRecord();
             _currentQuiz = GetRandomQuiz();
         }
 
         private void GetRecord()
         {
+
             int max = 0;
-            foreach (var m in results)
+            foreach (var m in _results)
             {
                 if (m.Time > max)
                 {
@@ -132,7 +120,7 @@ namespace magicsq
                 }
             }
             int min = max;
-            foreach (var mn in results)
+            foreach (var mn in _results)
             {
                 if (mn.Time < min)
                 {
@@ -171,7 +159,7 @@ namespace magicsq
         private void NewGame()
         {
             time = 0;
-            //gamenumber = gamenumber + 1;
+          
             timer1.Start();
 
             int counter = 0;
@@ -215,22 +203,41 @@ namespace magicsq
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SetGraph();
+            GetRecord();
+        }
+
+        private void SetGraph()
+        {
+            SelectResults();
+            chart1.DataSource = _results;
+            var series = chart1.Series[0];
+
+            series.ChartType = SeriesChartType.Line;
+
+
+            series.XValueMember = "GameNumber";
+            series.YValueMembers = "Time";
+            series.BorderWidth = 2;
+        }
+
+        private void SelectResults()
+        {
             _results.Clear();
             var s = (string)comboBox1.SelectedItem;
-            foreach ( var r in results)
+            foreach (var r in results)
             {
-                if (r.Gametype== s)
+                if (r.Gametype == s)
                 {
                     var rs = new Result();
                     rs.Id = r.Id;
                     rs.Gametype = s;
-                    rs.GameNumber = rs.GameNumber;
+                    rs.GameNumber = r.GameNumber;
                     rs.Time = r.Time;
                     _results.Add(r);
 
                 }
             }
-            
         }
 
         private void button1_Click_1(object sender, EventArgs e)

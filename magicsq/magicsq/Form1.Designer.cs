@@ -44,11 +44,11 @@ namespace magicsq
             this.sudokuButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.gametypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gameNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultBindingSource)).BeginInit();
@@ -148,11 +148,11 @@ namespace magicsq
             this.gameNumberDataGridViewTextBoxColumn,
             this.timeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.resultBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(584, 585);
+            this.dataGridView1.Location = new System.Drawing.Point(568, 577);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(514, 176);
+            this.dataGridView1.Size = new System.Drawing.Size(657, 252);
             this.dataGridView1.TabIndex = 8;
             // 
             // comboBox1
@@ -160,12 +160,22 @@ namespace magicsq
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Sudoku",
-            "Bűvöskocka"});
+            "Bűvösnégyzet"});
             this.comboBox1.Location = new System.Drawing.Point(765, 490);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(287, 651);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // gametypeDataGridViewTextBoxColumn
             // 
@@ -194,16 +204,6 @@ namespace magicsq
             // resultBindingSource
             // 
             this.resultBindingSource.DataSource = typeof(magicsq.Result);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(287, 651);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 
