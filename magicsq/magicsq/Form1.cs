@@ -52,14 +52,20 @@ namespace magicsq
 
         private void Mf_MouseDown(object sender, MouseEventArgs e)
         {
+
             string val = "";
             foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
             {
                 val += mf.Value.ToString();
             }
-            if (val.Equals(_currentQuiz.Solution))
+            if (val != "000000000")
             {
-               EndGame();
+
+
+                if (val.Equals(_currentQuiz.Solution))
+                {
+                    EndGame();
+                }
             }
         }
 
