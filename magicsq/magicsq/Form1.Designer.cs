@@ -39,6 +39,8 @@ namespace magicsq
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblRekord = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@ namespace magicsq
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(626, 75);
+            this.chart1.Location = new System.Drawing.Point(638, 27);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -99,11 +101,30 @@ namespace magicsq
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblRekord
+            // 
+            this.lblRekord.AutoSize = true;
+            this.lblRekord.Location = new System.Drawing.Point(638, 375);
+            this.lblRekord.Name = "lblRekord";
+            this.lblRekord.Size = new System.Drawing.Size(65, 20);
+            this.lblRekord.TabIndex = 5;
+            this.lblRekord.Text = "Rekord:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(710, 375);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 20);
+            this.label4.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 560);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblRekord);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chart1);
@@ -125,6 +146,8 @@ namespace magicsq
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblRekord;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -83,7 +83,7 @@ namespace magicsq
             _results.Add(r);
             chart1.DataSource = _results;
             var series = chart1.Series[0];
-            if (gamenumber==1)
+            if (gamenumber == 1)
             {
                 series.ChartType = SeriesChartType.Point;
             }
@@ -91,17 +91,33 @@ namespace magicsq
             {
                 series.ChartType = SeriesChartType.Line;
             }
-            
+
             series.XValueMember = "GameNumber";
             series.YValueMembers = "Time";
-            series.BorderWidth = 2;
-
-
-
-
-
+            series.BorderWidth = 2;            
+            GetRecord();
             _currentQuiz = GetRandomQuiz();
-           
+        }
+
+        private void GetRecord()
+        {
+            int max = 0;
+            foreach (var m in _results)
+            {
+                if (m.Time > max)
+                {
+                    max = m.Time;
+                }
+            }
+            int min = max;
+            foreach (var mi in _results)
+            {
+                if (mi.Time < min)
+                {
+                    min = mi.Time;
+                }
+            }
+            label4.Text = min.ToString();
         }
 
         private void LoadMagicsquares()
@@ -158,5 +174,7 @@ namespace magicsq
             _currentQuiz = GetRandomQuiz();
             NewGame();
         }
+
+      
     }
 }
