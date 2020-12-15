@@ -127,7 +127,20 @@ namespace magicsq
                     min = mn.Time;
                 }
             }
-            lblRekord.Text = min.ToString();
+            int counter = 0;
+            foreach (var rs in _results)
+            {
+                counter += 1;
+            }
+            if (counter>0)
+            {
+                lblRekord.Text = min.ToString() + " mp";
+            }
+            else
+            {
+                lblRekord.Text = "";
+            }
+          
         }
 
         private void LoadMagicsquares(string file)
@@ -175,7 +188,7 @@ namespace magicsq
         private void timer1_Tick(object sender, EventArgs e)
         {
             time = time + 1;
-            lblTime.Text = time.ToString();
+            lblTime.Text = time.ToString() + " mp";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -212,8 +225,21 @@ namespace magicsq
             SelectResults();
             chart1.DataSource = _results;
             var series = chart1.Series[0];
+            int counter=0;
+            
+            foreach (var rs in _results)
+            {
+                counter += 1;
+            }
 
-            series.ChartType = SeriesChartType.Line;
+            if (counter==1)
+            {
+                series.ChartType = SeriesChartType.Point;
+            }
+            else
+            {
+                series.ChartType = SeriesChartType.Line;
+            } 
 
 
             series.XValueMember = "GameNumber";
@@ -224,14 +250,14 @@ namespace magicsq
         private void SelectResults()
         {
             _results.Clear();
-            var s = (string)comboBox1.SelectedItem;
+            var gt = (string)comboBox1.SelectedItem;
             foreach (var r in results)
             {
-                if (r.Gametype == s)
+                if (r.Gametype == gt)
                 {
                     var rs = new Result();
                     rs.Id = r.Id;
-                    rs.Gametype = s;
+                    rs.Gametype = gt;
                     rs.GameNumber = r.GameNumber;
                     rs.Time = r.Time;
                     _results.Add(r);

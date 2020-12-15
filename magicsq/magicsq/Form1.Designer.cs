@@ -45,11 +45,11 @@ namespace magicsq
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblGametype = new System.Windows.Forms.Label();
             this.gametypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gameNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lblGametype = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultBindingSource)).BeginInit();
@@ -158,6 +158,7 @@ namespace magicsq
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Sudoku",
@@ -177,6 +178,15 @@ namespace magicsq
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // lblGametype
+            // 
+            this.lblGametype.AutoSize = true;
+            this.lblGametype.Location = new System.Drawing.Point(609, 431);
+            this.lblGametype.Name = "lblGametype";
+            this.lblGametype.Size = new System.Drawing.Size(86, 20);
+            this.lblGametype.TabIndex = 11;
+            this.lblGametype.Text = "Játéktípus:";
             // 
             // gametypeDataGridViewTextBoxColumn
             // 
@@ -206,15 +216,6 @@ namespace magicsq
             // 
             this.resultBindingSource.DataSource = typeof(magicsq.Result);
             // 
-            // lblGametype
-            // 
-            this.lblGametype.AutoSize = true;
-            this.lblGametype.Location = new System.Drawing.Point(609, 431);
-            this.lblGametype.Name = "lblGametype";
-            this.lblGametype.Size = new System.Drawing.Size(86, 20);
-            this.lblGametype.TabIndex = 11;
-            this.lblGametype.Text = "Játéktípus:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -232,6 +233,7 @@ namespace magicsq
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.mainPanel);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
