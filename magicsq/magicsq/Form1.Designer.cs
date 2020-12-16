@@ -45,11 +45,10 @@ namespace magicsq
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblGametype = new System.Windows.Forms.Label();
-            this.gametypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.gameNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultBindingSource)).BeginInit();
@@ -144,15 +143,14 @@ namespace magicsq
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.gametypeDataGridViewTextBoxColumn,
             this.gameNumberDataGridViewTextBoxColumn,
             this.timeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.resultBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(530, 564);
+            this.dataGridView1.Location = new System.Drawing.Point(712, 457);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(695, 265);
+            this.dataGridView1.Size = new System.Drawing.Size(520, 265);
             this.dataGridView1.TabIndex = 8;
             // 
             // comboBox1
@@ -177,13 +175,15 @@ namespace magicsq
             this.lblGametype.TabIndex = 11;
             this.lblGametype.Text = "Játéktípus:";
             // 
-            // gametypeDataGridViewTextBoxColumn
+            // button1
             // 
-            this.gametypeDataGridViewTextBoxColumn.DataPropertyName = "Gametype";
-            this.gametypeDataGridViewTextBoxColumn.HeaderText = "Játéktípus";
-            this.gametypeDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.gametypeDataGridViewTextBoxColumn.Name = "gametypeDataGridViewTextBoxColumn";
-            this.gametypeDataGridViewTextBoxColumn.Width = 150;
+            this.button1.Location = new System.Drawing.Point(1115, 172);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gameNumberDataGridViewTextBoxColumn
             // 
@@ -204,16 +204,6 @@ namespace magicsq
             // resultBindingSource
             // 
             this.resultBindingSource.DataSource = typeof(magicsq.Result);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1115, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -257,11 +247,10 @@ namespace magicsq
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource resultBindingSource;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gametypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gameNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label lblGametype;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gameNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
     }
 }
 

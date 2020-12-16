@@ -53,7 +53,7 @@ namespace magicsq
         {
             
             Width = Height;
-            BackColor = Color.AntiqueWhite;
+            BackColor = Color.GreenYellow;
             Value = 0;
             MouseDown += Magicfield_MouseDown;
         }

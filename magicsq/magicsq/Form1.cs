@@ -14,7 +14,7 @@ namespace magicsq
 {
     public partial class Form1 : Form
     {
-        BindingList<Result> results = new BindingList<Result>();
+        private List<Result> results = new List<Result>();
         BindingList<Result> selectedresults = new BindingList<Result>();
         private Random _rng = new Random();
         private Magicsquare _currentQuiz = null;
@@ -43,7 +43,7 @@ namespace magicsq
                 {
                     Magicfield mf = new Magicfield();
                     mf.Height = size;
-                    mf.Width = size;
+                    mf.Width = mf.Height;
                     mf.Left = col * mf.Width + (int)(Math.Floor((double)(col/3))) * lineWidth;
                     mf.Top = row * mf.Height + (int)(Math.Floor((double)(row / 3))) * lineWidth;
                     mf.MouseDown += Mf_MouseDown;
@@ -176,7 +176,7 @@ namespace magicsq
           
             timer1.Start();
 
-            int counter = 0;
+          int counter = 0;
               foreach (var mf in mainPanel.Controls.OfType<Magicfield>())
             {
                 mf.Value = int.Parse(_currentQuiz.Quiz[counter].ToString());
