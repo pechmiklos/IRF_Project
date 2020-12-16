@@ -15,6 +15,7 @@ namespace magicsq
     public partial class Form1 : Form
     {
         BindingList<Result> results = new BindingList<Result>();
+        BindingList<Result> selectedresults = new BindingList<Result>();
         private Random _rng = new Random();
         private Magicsquare _currentQuiz = null;
         public int magicnumber = 0;
@@ -216,6 +217,8 @@ namespace magicsq
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            dataGridView1.DataSource = selectedresults;
             SetGraph();
             GetRecord();
         }
@@ -250,6 +253,7 @@ namespace magicsq
         private void SelectResults()
         {
             _results.Clear();
+            selectedresults.Clear();
             var gt = (string)comboBox1.SelectedItem;
             foreach (var r in results)
             {
@@ -261,6 +265,7 @@ namespace magicsq
                     rs.GameNumber = r.GameNumber;
                     rs.Time = r.Time;
                     _results.Add(r);
+                    selectedresults.Add(r);
 
                 }
             }
