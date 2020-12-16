@@ -21,12 +21,12 @@ namespace magicsq
         public int magicnumber = 0;
         public int sudokunumber = 0;
         private List<Magicsquare> _magicssquares = new List<Magicsquare>();
-        private List<Result> _results = new List<Result>();
+        private List<Result> chartresults = new List<Result>();
         
         public Form1()
         {
             InitializeComponent();
-            chart1.DataSource = _results;
+            chart1.DataSource = chartresults;
             dataGridView1.DataSource = results;
             
             
@@ -113,7 +113,7 @@ namespace magicsq
         {
 
             int max = 0;
-            foreach (var m in _results)
+            foreach (var m in chartresults)
             {
                 if (m.Time > max)
                 {
@@ -121,7 +121,7 @@ namespace magicsq
                 }
             }
             int min = max;
-            foreach (var mn in _results)
+            foreach (var mn in chartresults)
             {
                 if (mn.Time < min)
                 {
@@ -129,7 +129,7 @@ namespace magicsq
                 }
             }
             int counter = 0;
-            foreach (var rs in _results)
+            foreach (var rs in chartresults)
             {
                 counter += 1;
             }
@@ -192,18 +192,23 @@ namespace magicsq
             lblTime.Text = time.ToString() + " mp";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoadMagicsquares("magicsquare.csv");
-            ClearPanel();
-            CreatePlayField(3,60);
-            _currentQuiz = GetRandomQuiz();
-            NewGame();
-        }
+       
 
         private void ClearPanel()
         {
             mainPanel.Controls.Clear();
+        }
+
+        private void magicButton_Click_1(object sender, EventArgs e)
+        {
+            LoadMagicsquares("magicsquare.csv");
+            ClearPanel();
+            CreatePlayField(3, 60);
+            _currentQuiz = GetRandomQuiz();
+            NewGame();
+            comboBox1.SelectedItem = "Bűvösnégyzet";
+
+
         }
 
         private void sudokuButton_Click(object sender, EventArgs e)
@@ -213,6 +218,8 @@ namespace magicsq
             CreatePlayField(9,30);
             _currentQuiz = GetRandomQuiz();
             NewGame();
+            comboBox1.SelectedItem = "Sudoku";
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -226,11 +233,11 @@ namespace magicsq
         private void SetGraph()
         {
             SelectResults();
-            chart1.DataSource = _results;
+            chart1.DataSource = chartresults;
             var series = chart1.Series[0];
             int counter=0;
             
-            foreach (var rs in _results)
+            foreach (var rs in chartresults)
             {
                 counter += 1;
             }
@@ -252,7 +259,7 @@ namespace magicsq
 
         private void SelectResults()
         {
-            _results.Clear();
+            chartresults.Clear();
             selectedresults.Clear();
             var gt = (string)comboBox1.SelectedItem;
             foreach (var r in results)
@@ -264,14 +271,14 @@ namespace magicsq
                     rs.Gametype = gt;
                     rs.GameNumber = r.GameNumber;
                     rs.Time = r.Time;
-                    _results.Add(r);
+                    chartresults.Add(r);
                     selectedresults.Add(r);
 
                 }
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             EndGame();
         }
